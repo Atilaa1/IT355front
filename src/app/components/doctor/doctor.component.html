@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #282d32;">
+    <div class="container-fluid">
+        <h2 class="navbar-brand" style="color: white;">Our doctors</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <button (click)="clickAddDoctors()" class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add doctor</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<table class="table table-striped mt-3">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Speciality</th>
+            <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of doctors" style="color:white ;">
+            <td><img src="{{row.img}}" alt="" width="100px" height="100px"></td>
+
+            <td>{{row.name}}</td>
+            <td>{{row.surname}}</td>
+            <td>{{row.speciality}}</td>
+            <td>
+                <button (click)="deleteDocs(row)" class="btn btn-danger mx-3">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalji o leku</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="formValue">
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" formControlName="name" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="surname" class="form-label">Last name</label>
+                        <input type="text" formControlName="surname" class="form-control" id="surname">
+                    </div>
+                    <div class="mb-3">
+                        <label for="speciality" class="form-label">Speciality</label>
+                        <input type="text" formControlName="speciality" class="form-control" id="speciality">
+                    </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Picture</label>
+                        <input type="text" formControlName="img" class="form-control" id="img">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" *ngIf="showAdd" (click)="postDoctorDetails()" class="btn btn-primary">Add</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

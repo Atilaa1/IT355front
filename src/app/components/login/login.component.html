@@ -1,0 +1,8 @@
+<form (ngSubmit)="login()">
+
+    <input matInput placeholder="Username" [(ngModel)]="credentials.username" name="username">
+
+    <input matInput placeholder="Password" [(ngModel)]="credentials.password" name="password" type="password">
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+</form>

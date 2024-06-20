@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<div class="container mt-3">
+    <h2 class="text-center">Hospitals</h2>
+    <h2 class="navbar-brand" href="#" style="color: white;">Our sister hospitals</h2>
+    <table class="table table-striped mt-3">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Picture</th>
+                <th scope="col">Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let hospital of hospitals">
+                <td><img [src]="hospital.img" alt="" width="100px" height="100px"></td>
+                <td>{{ hospital.name }}</td>
+                <td>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#hospitalDetailsModal" (click)="viewDetails(hospital)">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="hospitalDetailsModal" tabindex="-1" aria-labelledby="hospitalDetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="hospitalDetailsModalLabel">Details of the hospital</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body" *ngIf="selectedHospital">
+                <div class="mb-3">
+                    <label for="hospitalName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="hospitalName" [value]="selectedHospital.name" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="hospitalLocation" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="hospitalLocation" [value]="selectedHospital.location" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="hospitalImg" class="form-label">Picture</label>
+                    <img [src]="selectedHospital.img" alt="" class="img-fluid">
+                </div>
+                <div class="mb-3">
+                    <label for="hospitalCapacity" class="form-label">Capacity</label>
+                    <input type="text" class="form-control" id="hospitalCapacity" [value]="selectedHospital.capacity" readonly>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
