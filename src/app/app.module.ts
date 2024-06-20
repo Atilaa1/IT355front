@@ -12,6 +12,9 @@ import { SponsorComponent } from './components/sponsor/sponsor.component';
 import { LoginComponent } from './components/login/login.component';
 import { FilterPipe } from './filter/filter.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AdminLoggedInGuard } from './guards/admin-logged-in.guard';
+import { LoggedInGuard } from './guards/logged-in.guard';
+import { httpInterceptorProviders } from './_helpers/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [LoggedInGuard,
+    AdminLoggedInGuard,httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

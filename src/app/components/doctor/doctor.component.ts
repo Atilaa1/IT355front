@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorService } from 'src/app/services/doctor/doctor.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-doctor',
   templateUrl: './doctor.component.html',
   styleUrls: ['./doctor.component.scss']
 })
-export class DoctorComponent implements OnInit {
+export class DoctorComponent implements OnInit, DoCheck {
   doctors: Doctor[] = [];
   formValue!: FormGroup;
   showAdd!: boolean;
   showUpdate!: boolean;
-
-  constructor(private _doctorService: DoctorService, private fb: FormBuilder) {}
+  isAdmin!:boolean;
+  constructor(private _doctorService: DoctorService, private fb: FormBuilder,private _storageService: StorageService) {}
 
   ngOnInit(): void {
     this.formValue = this.fb.group({
@@ -25,6 +26,9 @@ export class DoctorComponent implements OnInit {
     });
 
     this.getAllDoctors();
+  }
+  ngDoCheck(): void {
+    this.isAdmin = this._storageService.isAdminLoggedIn();
   }
 
   getAllDoctors(): void {

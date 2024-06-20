@@ -9,7 +9,7 @@ import { Sponsor } from 'src/app/models/sponsor';
 export class SponsorService {
 
  
-  private baseUrl = 'http://localhost:8080/sponsors';
+  private baseUrl = 'http://localhost:8080/api/sponsors';
 
   constructor(private _http : HttpClient) { }
 

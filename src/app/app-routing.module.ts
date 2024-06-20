@@ -5,13 +5,16 @@ import { DoctorComponent } from './components/doctor/doctor.component';
 import { HospitalComponent } from './components/hospital/hospital.component';
 import { MedicineComponent } from './components/medicine/medicine.component';
 import { SponsorComponent } from './components/sponsor/sponsor.component';
+import { AdminLoggedInGuard } from './guards/admin-logged-in.guard';
+import { LoggedInGuard } from './guards/logged-in.guard';
 
 const routes: Routes = [
-  { path: 'doctors', component: DoctorComponent },
-  { path: 'hospitals', component: HospitalComponent },
-  { path: 'medicines', component: MedicineComponent },
-  { path: 'sponsors', component: SponsorComponent }
-  
+  { path: 'login', component: LoginComponent },
+  { path: 'doctors', component: DoctorComponent, canActivate: [AdminLoggedInGuard] },
+  { path: 'hospitals', component: HospitalComponent, canActivate: [LoggedInGuard] },
+  { path: 'medicines', component: MedicineComponent, canActivate: [LoggedInGuard] },
+  { path: 'sponsors', component: SponsorComponent, canActivate: [LoggedInGuard] },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }  // Defaultna ruta
 ];
 
 

@@ -1,0 +1,53 @@
+/* login.component.css */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #282c34;
+    /* Primer pozadinske boje */
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #3a3f47;
+    /* Primer pozadinske boje forme */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+    width: 100%;
+    max-width: 300px;
+    /* Maksimalna širina input polja */
+    height: 30px;
+    margin: 10px 0;
+    color: aliceblue;
+    background-color: #555;
+    /* Primer pozadinske boje input polja */
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+button {
+    width: 100%;
+    max-width: 300px;
+    /* Maksimalna širina dugmeta */
+    margin-top: 20px;
+}

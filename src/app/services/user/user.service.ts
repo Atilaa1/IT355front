@@ -1,34 +1,43 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 
+const baseUrl = 'http://localhost:8080/api/auth/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class UserService {
-
-  private baseUrl = 'http://localhost:8080/users';
   constructor(private _http: HttpClient) { }
-
-  public getUser(): Observable<User[]>{
-    return this._http.get<User[]>(this.baseUrl);
+  login(username: string, password: string): Observable<any> {
+    return this._http.post(
+      baseUrl + 'login',
+      {
+        username,
+        password,
+      },
+      httpOptions
+    );
+  }
+  register(user: User): Observable<any> {
+    return this._http.post(
+      baseUrl + 'register',
+      user,
+      httpOptions
+    );
   }
 
-  public getUserById(id?: number): Observable<User>{
-    return this._http.get<User>(this.baseUrl + '/' + id);
+  logout(): Observable<any> {
+    return this._http.post(baseUrl + 'signout', { }, httpOptions);
   }
 
-  public addUser(user: User): Observable<User>{
-    return this._http.post<User>(this.baseUrl, user);
-  }
-
-  public updateUser(user: User): Observable<User>{
-    return this._http.put<User>(this.baseUrl, user);
-  }
-
-  public deleteSuperheroById(id?: number): Observable<User>{
-    return this._http.delete<User>(this.baseUrl + '/' + id);
-  }
-
+ 
 }

@@ -2,6 +2,9 @@
     <li style="float: left;">
         <a routerLink="/doctors" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Doctors</a>
     </li>
+    <li class="nav-item" *ngIf="!isLogged">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
+    </li>
     <li style="float: left;">
         <a routerLink="/hospitals" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Hospitals</a>
     </li>
@@ -12,7 +15,7 @@
         <a routerLink="/sponsors" style="display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;">Sponsors</a>
     </li>
     <li style="float: right;">
-        <button class="btn btn-dark" style="display: block; color: white; text-align: center; padding: 14px 16px; background: none; border: none;">Logout</button>
+        <button class="btn btn-dark" (click)="logout()" style="display: block; color: white; text-align: center; padding: 14px 16px; background: none; border: none;">Logout</button>
     </li>
 </ul>
 <router-outlet></router-outlet>
