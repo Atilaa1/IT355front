@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminLoggedInGuard } from './guards/admin-logged-in.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     SponsorComponent,
     LoginComponent,
     NavbarComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

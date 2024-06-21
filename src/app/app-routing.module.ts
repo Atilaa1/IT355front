@@ -7,9 +7,11 @@ import { MedicineComponent } from './components/medicine/medicine.component';
 import { SponsorComponent } from './components/sponsor/sponsor.component';
 import { AdminLoggedInGuard } from './guards/admin-logged-in.guard';
 import { LoggedInGuard } from './guards/logged-in.guard';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'reg', component: RegistrationComponent },
   { path: 'doctors', component: DoctorComponent, canActivate: [AdminLoggedInGuard] },
   { path: 'hospitals', component: HospitalComponent, canActivate: [LoggedInGuard] },
   { path: 'medicines', component: MedicineComponent, canActivate: [LoggedInGuard] },
